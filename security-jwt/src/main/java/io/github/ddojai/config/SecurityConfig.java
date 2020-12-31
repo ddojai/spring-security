@@ -1,5 +1,6 @@
 package io.github.ddojai.config;
 
+import io.github.ddojai.config.jwt.JwtAuthenticationFilter;
 import io.github.ddojai.filter.MyFilter3;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       .and()
       .addFilter(corsFilter)  // @CrossOrigin은 인증이 필요 하지 않을 때 만, 인증이 필요할 때 는 시큐리티 필터에 등록
       .formLogin().disable()
+      .httpBasic().disable()
+      .addFilter(new JwtAuthenticationFilter(authenticationManager())) // AuthenticationManager
       .authorizeRequests()
       .antMatchers("/api/v1/user/**")
       .access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
