@@ -1,5 +1,7 @@
 package io.github.ddojai.filter;
 
+import io.github.ddojai.config.jwt.JwtProperties;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +21,7 @@ public class MyFilter3 implements Filter {
     // 토큰이 서버에서 만든 토큰이 맞는지만 검증하면 됨
     if (req.getMethod().equals("POST")) {
       System.out.println("포스트 요청됨");
-      String headerAuth = req.getHeader("Authorization");
+      String headerAuth = req.getHeader(JwtProperties.HEADER_STRING);
       System.out.println(headerAuth);
       System.out.println("필터3");
 

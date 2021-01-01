@@ -1,7 +1,9 @@
 package io.github.ddojai.config;
 
 import io.github.ddojai.config.jwt.JwtAuthenticationFilter;
+import io.github.ddojai.config.jwt.JwtAuthorizationFilter;
 import io.github.ddojai.filter.MyFilter3;
+import io.github.ddojai.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +21,7 @@ import org.springframework.web.filter.CorsFilter;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   private final CorsFilter corsFilter;
+  private final UserRepository userRepository;
 
   @Bean
   public BCryptPasswordEncoder passwordEncoder() {
@@ -27,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.addFilterBefore(new MyFilter3(), SecurityContextPersistenceFilter.class);
+//    http.addFilterBefore(new MyFilter3(), SecurityContextPersistenceFilter.class);
     http.csrf().disable();
     http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
       .and()
@@ -35,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       .formLogin().disable()
       .httpBasic().disable()
       .addFilter(new JwtAuthenticationFilter(authenticationManager())) // AuthenticationManager
+      .addFilter(new JwtAuthorizationFilter(authenticationManager(), userRepository)) // AuthenticationManager
       .authorizeRequests()
       .antMatchers("/api/v1/user/**")
       .access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
