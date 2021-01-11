@@ -1,0 +1,45 @@
+spring:
+  jpa:
+    show-sql: true # JPA로 생성되는 쿼리 확인
+  h2:
+    console:
+      enabled: true
+      path: /h2-console # h2 db 웹 클라이언트 접속 url
+  devtools:
+    livereload:
+      enabled: true # 정적파일들의 실시간 갱신
+logging:
+  level:
+    org.hibernate.type: trace  # JPA로 생성되는 쿼리의 파라미터 값 확인
+
+server:
+  ssl:
+    key-store: keystore.p12
+    key-store-password: kim0696
+    keyStoreType: PKCS12
+    keyAlias: tomcat
+
+facebook:
+  client:
+    clientId: 285092795649385
+    clientSecret: a71f70c246f1737ce82256d41a18cf6c
+    accessTokenUri: https://graph.facebook.com/oauth/access_token
+    userAuthorizationUri: https://www.facebook.com/dialog/oauth
+    tokenName: oauth_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://graph.facebook.com/me
+
+google:
+  client:
+    clientId: 415140500300-7batj5kgb6mj54doblf39dc3fja7fkjh.apps.googleusercontent.com
+    clientSecret: X3U7RHv3zSqft6wtF-8kK08j
+    accessTokenUri: https://www.googleapis.com/oauth2/v4/token
+    userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
+    clientAuthenticationScheme: form
+    scope:
+    - email
+    - profile
+  resource:
+    userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
