@@ -1,4 +1,4 @@
-package com.tistory.ddojai.securitybasic;
+package com.github.ddojai.security.basic;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

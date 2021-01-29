@@ -1,4 +1,4 @@
-package com.tistory.ddojai.securitybasic.config;
+package com.github.ddojai.security.basic.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

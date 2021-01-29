@@ -1,4 +1,4 @@
-package com.tistory.ddojai.securitybasic;
+package com.github.ddojai.security.basic;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;

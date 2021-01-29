@@ -1,4 +1,4 @@
-package com.tistory.ddojai.securitybasic;
+package com.github.ddojai.security.basic;
 
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
