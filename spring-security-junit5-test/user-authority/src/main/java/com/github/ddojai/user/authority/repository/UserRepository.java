@@ -1,6 +1,6 @@
-package repository;
+package com.github.ddojai.user.authority.repository;
 
-import domain.User;
+import com.github.ddojai.user.authority.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

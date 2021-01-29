@@ -1,4 +1,4 @@
-package domain;
+package com.github.ddojai.user.authority.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
